@@ -104,7 +104,7 @@ SPEEDTEST_COMMAND : ["speedtest"]
 
 #Voice chat commands
 ACTIVEVC_COMMAND : ["activevc"]
-ACTIVEVIDEO_COMMAND : ["activec"]
+ACTIVEVIDEO_COMMAND : ["activevd"]
 
 #Gban Commands
 GBAN_COMMAND : ["gban"]
