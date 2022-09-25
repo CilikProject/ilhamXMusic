@@ -1,17 +1,8 @@
-#
-# Copyright (C) 2021-2022 by TeamYukki@Github, < https://github.com/TeamYukki >.
-#
-# This file is part of < https://github.com/TeamYukki/YukkiMusicBot > project,
-# and is released under the "GNU v3.0 License Agreement".
-# Please see < https://github.com/TeamYukki/YukkiMusicBot/blob/master/LICENSE >
-#
-# All rights reserved.
-
 import os
 from random import randint
 from typing import Union
 
-from pyrogram.types import InlineKeyboardMarkup
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 import config
 from CilikMusic import Carbon, YouTube, app
@@ -170,11 +161,13 @@ async def stream(
                 "video" if video else "audio",
             )
             position = len(db.get(chat_id)) - 1
+            button = [[InlineKeyboardButton("🗑 Close", callback_data="close")]]
             await app.send_message(
                 original_chat_id,
                 _["queue_4"].format(
-                    position, title[:30], duration_min, user_name
+                    position, title, duration_min, user_name
                 ),
+                reply_markup=InlineKeyboardMarkup(button),
             )
         else:
             if not forceplay:
@@ -224,11 +217,13 @@ async def stream(
                 "audio",
             )
             position = len(db.get(chat_id)) - 1
+            button = [[InlineKeyboardButton("🗑 Close", callback_data="close")]]
             await app.send_message(
                 original_chat_id,
                 _["queue_4"].format(
-                    position, title[:30], duration_min, user_name
+                    position, title, duration_min, user_name
                 ),
+                reply_markup=InlineKeyboardMarkup(button),
             )
         else:
             if not forceplay:
@@ -278,11 +273,13 @@ async def stream(
                 "video" if video else "audio",
             )
             position = len(db.get(chat_id)) - 1
+            button = [[InlineKeyboardButton("🗑 Close", callback_data="close")]]
             await app.send_message(
                 original_chat_id,
                 _["queue_4"].format(
-                    position, title[:30], duration_min, user_name
+                    position, title, duration_min, user_name
                 ),
+                reply_markup=InlineKeyboardMarkup(button),
             )
         else:
             if not forceplay:
@@ -336,11 +333,13 @@ async def stream(
                 "video" if video else "audio",
             )
             position = len(db.get(chat_id)) - 1
+            button = [[InlineKeyboardButton("🗑 Close", callback_data="close")]]
             await app.send_message(
                 original_chat_id,
                 _["queue_4"].format(
-                    position, title[:30], duration_min, user_name
+                    position, title, duration_min, user_name
                 ),
+                reply_markup=InlineKeyboardMarkup(button),
             )
         else:
             if not forceplay:
@@ -394,7 +393,7 @@ async def stream(
             position = len(db.get(chat_id)) - 1
             await mystic.edit_text(
                 _["queue_4"].format(
-                    position, title[:30], duration_min, user_name
+                    position, title, duration_min, user_name
                 )
             )
         else:
