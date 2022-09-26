@@ -14,10 +14,6 @@ def botplaylist_markup(_):
     buttons = [
         [
             InlineKeyboardButton(
-                text=_["PL_B_1"],
-                callback_data="get_playlist_playmode",
-            ),
-            InlineKeyboardButton(
                 text=_["PL_B_8"], callback_data="get_top_playlists"
             ),
         ],
@@ -65,9 +61,6 @@ def top_play_markup(_):
 def get_playlist_markup(_):
     buttons = [
         [
-            InlineKeyboardButton(
-                text=_["P_B_1"], callback_data="play_playlist a"
-            ),
             InlineKeyboardButton(
                 text=_["P_B_2"], callback_data="play_playlist b"
             ),
