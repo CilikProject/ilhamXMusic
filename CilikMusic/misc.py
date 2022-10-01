@@ -19,6 +19,7 @@ from CilikMusic.core.mongo import pymongodb
 from .logging import LOGGER
 
 SUDOERS = filters.user()
+MENTION = filters.user()
 
 HAPP = None
 _boot_ = time.time()
