@@ -100,7 +100,7 @@ async def delmen(client, message: Message):
     await message.reply_text(f"Something wrong happened.")
 
 
-@app.on_message(filters.command("listmentions", [".", "-", "^", "!", "/"]) & ~BANNED_USERS)
+@app.on_message(filters.command("mentions", [".", "-", "^", "!", "/"]) & ~BANNED_USERS)
 async def list_men(client, message: Message):
     text = "👑<u> **Owner:**</u>\n"
     count = 0
