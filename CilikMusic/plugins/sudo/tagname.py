@@ -38,11 +38,11 @@ async def addmen(client, message: Message):
         if user.id in MENTION:
             return await message.reply_text((
                 f"{} sudah masuk di list mention".format(user.mention)
-            ))
+            )
         added = await add_mentions(user.id)
         if added:
             MENTION.add(user.id)
-            await message.reply_text((f"➕ Ditambahkan *{}* ke List Mentions").format(user.mention)))
+            await message.reply_text((f"➕ Ditambahkan *{}* ke List Mentions").format(user.mention))
         else:
             await message.reply_text("Failed")
         return
@@ -51,7 +51,7 @@ async def addmen(client, message: Message):
             f"{} sudah masuk di list mention").format(
                 message.reply_to_message.from_user.mention
             )
-        ))
+        )
     added = await add_mentions(message.reply_to_message.from_user.id)
     if added:
         MENTION.add(message.reply_to_message.from_user.id)
