@@ -35,31 +35,31 @@ async def addmen(client, message: Message):
         if "@" in user:
             user = user.replace("@", "")
         user = await app.get_users(user)
-        if user.id in MENTION:
-            return await message.reply_text((
-                f"{} sudah masuk di list mention".format(user.mention)
+        if user.id in SUDOERS:
+            return await message.reply_text(
+                "{} sudah masuk di list mention".format(user.mention)
             )
         added = await add_mentions(user.id)
         if added:
             MENTION.add(user.id)
-            await message.reply_text((f"➕ Ditambahkan *{}* ke List Mentions").format(user.mention))
+            await message.reply_text("➕ Ditambahkan *{}* ke List Mentions".format(user.mention))
         else:
             await message.reply_text("Failed")
         return
     if message.reply_to_message.from_user.id in MENTION:
-        return await message.reply_text((
-            f"{} sudah masuk di list mention").format(
+        return await message.reply_text(
+            "{} sudah masuk di list mention").format(
                 message.reply_to_message.from_user.mention
             )
         )
     added = await add_mentions(message.reply_to_message.from_user.id)
     if added:
         MENTION.add(message.reply_to_message.from_user.id)
-        await message.reply_text((
-            f"➕ Ditambahkan *{}* ke List Mentions").format(
+        await message.reply_text(
+            "➕ Ditambahkan *{}* ke List Mentions".format(
                 message.reply_to_message.from_user.mention
             )
-        ))
+        )
     else:
         await message.reply_text("Failed")
     return
