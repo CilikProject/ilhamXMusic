@@ -42,7 +42,7 @@ async def addmen(client, message: Message):
         added = await add_mentions(user.id)
         if added:
             MENTION.add(user.id)
-            await message.reply_text("➕ Ditambahkan *{}* ke List Mentions".format(user.mention))
+            await message.reply_text("➕ Ditambahkan {} ke List Mentions".format(user.mention))
         else:
             await message.reply_text("Failed")
         return
