@@ -23,7 +23,7 @@ usersdb = mongodb.tgusersdb
 playlistdb = mongodb.playlist
 blockeddb = mongodb.blockedusers
 privatedb = mongodb.privatechats
-
+mentionsdb = mongodb.mentions
 
 # Playlist
 
@@ -286,6 +286,31 @@ async def remove_sudo(user_id: int) -> bool:
     )
     return True
 
+# Mentions 
+
+async def get_mentions() -> list:
+    mentions = await mentionsdb.find_one({"mention": "mention"})
+    if not mentions:
+        return []
+    return mentions["mentions"]
+
+
+async def add_mentions(user_id: int) -> bool:
+    mentions = await get_mentions()
+    mentions.append(user_id)
+    await mentionsdb.update_one(
+        {"mention": "mention"}, {"$set": {"mentions": mentions}}, upsert=True
+    )
+    return True
+
+
+async def remove_mentions(user_id: int) -> bool:
+    mentions = await get_mentions()
+    mentions.remove(user_id)
+    await mentionsdb.update_one(
+        {"mention": "mention"}, {"$set": {"mentions": mentions}}, upsert=True
+    )
+    return True
 
 # Total Queries on bot
 
