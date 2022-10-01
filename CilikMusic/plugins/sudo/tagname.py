@@ -48,7 +48,7 @@ async def addmen(client, message: Message):
         return
     if message.reply_to_message.from_user.id in MENTION:
         return await message.reply_text(
-            "{} sudah masuk di list mention").format(
+            "{} sudah masuk di list mention".format(
                 message.reply_to_message.from_user.mention
             )
         )
