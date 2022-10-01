@@ -56,7 +56,7 @@ async def addmen(client, message: Message):
     if added:
         MENTION.add(message.reply_to_message.from_user.id)
         await message.reply_text(
-            "➕ Ditambahkan *{}* ke List Mentions".format(
+            "➕ Ditambahkan {} ke List Mentions".format(
                 message.reply_to_message.from_user.mention
             )
         )
@@ -113,7 +113,7 @@ async def list_men(client, message: Message):
             count += 1
         except Exception:
             continue
-        text += f"{count}➤ {user}\n"
+        text += f"➤ {user}\n"
     smex = 0
     for user_id in MENTION:
         if user_id not in OWNER_ID:
@@ -126,7 +126,7 @@ async def list_men(client, message: Message):
                 )
                 if smex == 0:
                     smex += 1
-                    text += "\n👨‍🚀<u> **List Mentions:**</u>\n"
+                    text += "\n👨‍🚀<u> **List Mentions:**</u>\n\n"
                 count += 1
                 text += f"{count}➤ {user}\n"
             except Exception:
