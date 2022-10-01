@@ -36,8 +36,8 @@ async def addmen(client, message: Message):
             user = user.replace("@", "")
         user = await app.get_users(user)
         if user.id in MENTION:
-            return await message.reply_text(
-                f"{} sudah masuk di list mention".format(user.mention)
+            return await message.reply_text((
+                f"{} sudah masuk di list mention").format(user.mention)
             )
         added = await add_mentions(user.id)
         if added:
@@ -47,8 +47,8 @@ async def addmen(client, message: Message):
             await message.reply_text("Failed")
         return
     if message.reply_to_message.from_user.id in MENTION:
-        return await message.reply_text(
-            f"{} sudah masuk di list mention".format(
+        return await message.reply_text((
+            f"{} sudah masuk di list mention").format(
                 message.reply_to_message.from_user.mention
             )
         )
