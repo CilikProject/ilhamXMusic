@@ -35,7 +35,7 @@ async def addmen(client, message: Message):
         if "@" in user:
             user = user.replace("@", "")
         user = await app.get_users(user)
-        if user.id in SUDOERS:
+        if user.id in MENTION:
             return await message.reply_text(
                 "{} sudah masuk di list mention".format(user.mention)
             )
