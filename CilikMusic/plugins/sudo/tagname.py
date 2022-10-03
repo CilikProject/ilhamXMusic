@@ -128,7 +128,7 @@ async def list_men(client, message: Message):
                     smex += 1
                     text += "\n👥<u> **List Mentions:**</u>\n\n"
                 count += 1
-                text += f"-≽ {user}\n"
+                text += f"{user} -"
             except Exception:
                 continue
     if not text:
