@@ -104,30 +104,22 @@ async def delmen(client, message: Message):
     filters.command("mentions", [".", "-", "^", "!", "/"]) & filters.user(OWNER_ID)
 )
 async def list_men(client, message: Message):
-    if message.reply_to_message and get_arg(message):
-        return await message.reply("Berikan Sebuah Text atau Reply")
-    elif message.reply_to_message:
-        mode = "text_on_reply"
-        text = message.reply_to_message
-    elif get_arg(message):
-        mode = "text_on_cmd"
-        text = get_arg(message)
-    usrnum = 0
-    usrtxt = ""
+    await message.delete()
+    rep = message.reply_to_message
+    text = get_arg(message)
+    if not rep and not text:
+        return await message.reply("**Berikan Sebuah Teks atau Reply**")
     for user_id in MENTION:
-        user = await app.get_users(user_id)
-        user = (
-            user.first_name
-            if not user.mention
-            else user.mention
-            )
-        usrnum += 1
-        usrtxt += f"{user} "
-        if usrnum == 50:
-            if mode == "text_on_cmd":
-                txt = f"{usrtxt}\n\n{text}"
+        try:
+            user = await app.get_users(user_id)
+            user = (
+                user.first_name
+                if not user.mention
+                else user.mention
+                )
+            usrtxt = += f"{user} "
+            if text:
+                txt = f"{text}\n{usrtxt}"
                 await app.send_message(message.chat.id, txt)
-            elif mode == "text_on_reply":
-                await text.reply(usrtxt)   
-        usrnum = 0
-        usrtxt = ""
+            elif rep:
+                await rep.reply(usrtxt)
