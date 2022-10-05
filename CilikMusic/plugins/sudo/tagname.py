@@ -112,7 +112,8 @@ async def list_men(client, message: Message):
     elif get_arg(message):
         mode = "text_on_cmd"
         text = get_arg(message)
-
+    usrnum = 0
+    usrtxt = ""
     for user_id in MENTION:
         user = await app.get_users(user_id)
         user = (
@@ -128,3 +129,5 @@ async def list_men(client, message: Message):
                 await app.send_message(message.chat.id, txt)
             elif mode == "text_on_reply":
                 await text.reply(usrtxt)   
+        usrnum = 0
+        usrtxt = ""
