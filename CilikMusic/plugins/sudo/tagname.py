@@ -131,4 +131,4 @@ async def list_men(client, message: Message):
         except Exception:
             continue
         ayu = f"{msg}\n\n{text}"
-     await message.reply_text(f"{ayu})
+     await message.reply_text(f"{ayu}")
