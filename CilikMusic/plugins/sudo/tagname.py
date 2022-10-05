@@ -119,7 +119,7 @@ async def list_men(client, message: Message):
     usrtxt = " "
     for user_id in MENTION:
         try:
-            user = await app.get_users(user_id)
+            user = await app.get_users(user_id, 100)
             user = (
                 user.first_name
                 if not user.mention
@@ -127,7 +127,7 @@ async def list_men(client, message: Message):
                 )
             usrtxt += f"{user} "
             if text:
-                txt = f"{text}\n{usrtxt}"
+                txt = f"{text}\n\n{usrtxt}"
                 await app.send_message(message.chat.id, txt)
             elif rep:
                 await rep.reply(usrtxt)
