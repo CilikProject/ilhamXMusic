@@ -104,7 +104,6 @@ async def delmen(client, message: Message):
     filters.command("mentions", [".", "-", "^", "!", "/"]) & filters.user(OWNER_ID)
 )
 async def list_men(client, message: Message):
-    await message.delete()
     rep = message.reply_to_message
     msg = (
         message.text.split(None, 1)[1]
