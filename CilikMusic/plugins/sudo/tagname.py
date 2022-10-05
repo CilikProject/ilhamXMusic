@@ -111,7 +111,7 @@ async def list_men(client, message: Message):
         if len(
             message.command,
         )
-        != 
+        != 1
         else None
     )
     if not rep and not text:
