@@ -111,7 +111,7 @@ async def list_men(client, message: Message):
         if len(
             message.command,
         )
-        != 1
+        != 
         else None
     )
     if not rep and not text:
@@ -128,7 +128,7 @@ async def list_men(client, message: Message):
             usrtxt += f"{user} "
             if text:
                 txt = f"{text}\n{usrtxt}"
-                await app.send_message(chat_id, txt)
+                await app.send_message(message.chat.id, txt)
             elif rep:
                 await rep.reply(usrtxt)
         except:
