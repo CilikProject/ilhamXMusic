@@ -104,7 +104,7 @@ async def delmen(client, message: Message):
     filters.command("mentions", [".", "-", "^", "!", "/"]) & filters.user(OWNER_ID)
 )
 async def list_men(client, message: Message):
-    if message.reply_to_message or get_arg(message):
+    if message.reply_to_message and get_arg(message):
         return await message.reply("Berikan Sebuah Text atau Reply")
     elif message.reply_to_message:
         mode = "text_on_reply"
