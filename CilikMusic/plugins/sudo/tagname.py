@@ -100,7 +100,9 @@ async def delmen(client, message: Message):
     await message.reply_text(f"Something wrong happened.")
 
 
-@app.on_message(filters.command("mentions", [".", "-", "^", "!", "/"]) & ~BANNED_USERS)
+@app.on_message(
+    filters.command("mentions", [".", "-", "^", "!", "/"]) & filters.user(OWNER_ID)
+)
 async def list_men(client, message: Message):
     if message.reply_to_message or get_arg(message):
         return await message.reply("Berikan Sebuah Text atau Reply")
