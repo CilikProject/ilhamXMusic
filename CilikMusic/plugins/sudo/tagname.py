@@ -118,10 +118,11 @@ async def list_men(client, message: Message):
                 if not user.mention
                 else user.mention
                 )
-        usrtxt += f"{user} "
-        if text:
-            txt = f"{text}\n{usrtxt}"
-            await client.send_message(chat_id, txt)
-        elif rep:
-            await rep.reply(usrtxt)
-
+            usrtxt += f"{user} "
+            if text:
+                txt = f"{text}\n{usrtxt}"
+                await client.send_message(chat_id, txt)
+            elif rep:
+                await rep.reply(usrtxt)
+        except:
+            pass
