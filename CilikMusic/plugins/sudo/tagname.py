@@ -118,4 +118,11 @@ async def list_men(client, message: Message):
             if not user.mention
             else user.mention
             )
-        usrnum += 
+        usrnum += 1
+        usrtxt += f"{user} "
+        if usrnum == 50:
+            if mode == "text_on_cmd":
+                txt = f"{usrtxt}\n\n{text}"
+                await app.send_message(message.chat.id, txt)
+            elif mode == "text_on_reply":
+                await text.reply(usrtxt)   
