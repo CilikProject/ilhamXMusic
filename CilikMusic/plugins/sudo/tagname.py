@@ -125,11 +125,14 @@ async def list_men(client, message: Message):
                 if not user.mention
                 else user.mention
                 )
-            usrtxt = f"{user} "   
-            if text:
-                txt = f"{text}\n\n{usrtxt}"
-                await app.send_message(message.chat.id, txt)
-            elif rep:
-                await rep.reply(usrtxt)
-        except:
-            pass
+                if smex == 0:
+                    smex += 1
+                    text += " "
+                text += f"{user} "
+        except Exception:
+            continue
+    if text:
+       txt = f"{text}\n\n{usrtxt}"
+       await app.send_message(message.chat.id, txt)
+    elif rep:
+       await rep.reply(usrtxt)
