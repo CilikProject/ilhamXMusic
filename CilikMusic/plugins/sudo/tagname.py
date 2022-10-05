@@ -122,5 +122,4 @@ async def list_men(client, message: Message):
             if text:
                 txt = f"{text}\n{usrtxt}"
                 await app.send_message(message.chat.id, txt)
-            elif rep:
-                await rep.reply(usrtxt)
+
