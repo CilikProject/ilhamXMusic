@@ -106,7 +106,7 @@ async def delmen(client, message: Message):
 async def list_men(client, message: Message):
     await message.delete()
     rep = message.reply_to_message
-    text = (
+    msg = (
         message.text.split(None, 1)[1]
         if len(
             message.command,
@@ -114,7 +114,7 @@ async def list_men(client, message: Message):
         != 1
         else None
     )
-    if not rep and not text:
+    if not rep and not msg:
         return await message.reply("**Berikan Sebuah Teks atau Reply**")
 
     for user_id in MENTION:
@@ -132,7 +132,7 @@ async def list_men(client, message: Message):
         except Exception:
             continue
     if text:
-       txt = f"{text}\n\n{usrtxt}"
+       txt = f"{text}\n\n{msg}"
        await app.send_message(message.chat.id, txt)
     elif rep:
-       await rep.reply(usrtxt)
+       await rep.reply(msg)
