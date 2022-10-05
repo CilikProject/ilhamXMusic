@@ -128,7 +128,7 @@ async def list_men(client, message: Message):
             usrtxt += f"{user} "
             if text:
                 txt = f"{text}\n{usrtxt}"
-                await client.send_message(chat_id, txt)
+                await app.send_message(chat_id, txt)
             elif rep:
                 await rep.reply(usrtxt)
         except:
