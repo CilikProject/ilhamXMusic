@@ -130,7 +130,7 @@ async def list_men(client, message: Message):
             text += f"{user}"
         except Exception:
             continue
-        ayu = f"{msg}\n\n{user}"
+        ayu = f"{msg}\n\n{text}"
     if not ayu:
         await message.reply_text("gada user yg di list")
     else:
