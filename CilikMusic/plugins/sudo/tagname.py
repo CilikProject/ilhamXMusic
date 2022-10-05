@@ -120,7 +120,7 @@ async def list_men(client, message: Message):
     for user_id in MENTION:
         try:
             user = await app.get_users(user_id)
-            user += (
+            user = (
                 user.first_name
                 if not user.mention
                 else user.mention
