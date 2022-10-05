@@ -14,7 +14,7 @@ from config import BANNED_USERS, MONGO_DB_URI, OWNER_ID
 from CilikMusic import app
 from CilikMusic.misc import MENTION
 from CilikMusic.utils.database import add_mentions, remove_mentions
-
+from CilikMusic.utils.decorators.tools get_arg
 
 # Command
 
@@ -102,36 +102,27 @@ async def delmen(client, message: Message):
 
 @app.on_message(filters.command("mentions", [".", "-", "^", "!", "/"]) & ~BANNED_USERS)
 async def list_men(client, message: Message):
-    text = "👑<u> **Owner:**</u>\n"
-    count = 0
-    for x in OWNER_ID:
-        try:
-            user = await app.get_users(x)
-            user = (
-                user.first_name if not user.mention else user.mention
-            )
-            count += 1
-        except Exception:
-            continue
-        text += f"-≽ {user}\n"
-    smex = 0
+    if message.reply_to_message or get_arg(message):
+        return await message.reply("Berikan Sebuah Text atau Reply")
+    elif:
+        mode = "text_on_reply"
+        text = message.reply_to_message
+    elif:
+        mode = "text_on_cmd"
+        text = get_arg(message)
+
     for user_id in MENTION:
-        if user_id not in OWNER_ID:
-            try:
-                user = await app.get_users(user_id)
-                user = (
-                    user.first_name
-                    if not user.mention
-                    else user.mention
-                )
-                if smex == 0:
-                    smex += 1
-                    text += "\n👥<u> **List Mentions:**</u>\n\n"
-                count += 1
-                text += f"{user} -"
-            except Exception:
-                continue
-    if not text:
-        await message.reply_text("❌ Tidak ada List mentions")
-    else:
-        await message.reply_text(text)
+        user = await app.get_users(user_id)
+        user = (
+            user.first_name
+            if not user.mention
+            else user.mention
+            )
+        usrnum += 1
+        usrtxt += f"{user} "
+        if usrnum == 50:
+            if mode == "text_on_cmd":
+                txt = f"{usrtxt}\n\n{text}"
+                await app.send_message(message.chat.id, txt)
+            elif mode == "text_on_reply":
+                await text.reply(usrtxt)    
