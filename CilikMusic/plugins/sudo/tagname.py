@@ -106,7 +106,14 @@ async def delmen(client, message: Message):
 async def list_men(client, message: Message):
     await message.delete()
     rep = message.reply_to_message
-    text = get_arg(message)
+    text = (
+        message.text.split(None, 1)[1]
+        if len(
+            message.command,
+        )
+        != 1
+        else None
+    )
     if not rep and not text:
         return await message.reply("**Berikan Sebuah Teks atau Reply**")
     usrtxt = " "
