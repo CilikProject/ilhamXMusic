@@ -124,11 +124,11 @@ async def list_men(client, message: Message):
                 user.first_name
                 if not user.mention
                 else user.mention
-                )
-                if smex == 0:
-                    smex += 1
-                    text += " "
-                text += f"{user} "
+            )
+            if smex == 0:
+                smex += 1
+                text += " "
+            text += f"{user} "
         except Exception:
             continue
     if text:
