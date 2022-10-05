@@ -109,6 +109,7 @@ async def list_men(client, message: Message):
     text = get_arg(message)
     if not rep and not text:
         return await message.reply("**Berikan Sebuah Teks atau Reply**")
+    usrtxt = " "
     for user_id in MENTION:
         try:
             user = await app.get_users(user_id)
