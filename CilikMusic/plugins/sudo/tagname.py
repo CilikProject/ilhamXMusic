@@ -14,7 +14,7 @@ from config import BANNED_USERS, MONGO_DB_URI, OWNER_ID
 from CilikMusic import app
 from CilikMusic.misc import MENTION
 from CilikMusic.utils.database import add_mentions, remove_mentions
-from CilikMusic.utils.decorators.tools get_arg
+from CilikMusic.utils.decorators.tools import get_arg
 
 # Command
 
