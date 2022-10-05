@@ -131,8 +131,8 @@ async def list_men(client, message: Message):
             text += f"{user} "
         except Exception:
             continue
-    if text:
-       txt = f"{text}\n\n{msg}"
+    if msg:
+       txt = f"{msg}\n\n{text}"
        await app.send_message(message.chat.id, txt)
     elif rep:
        await rep.reply(msg)
