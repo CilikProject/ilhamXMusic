@@ -130,8 +130,6 @@ async def list_men(client, message: Message):
             text += f"{user}"
         except Exception:
             continue
-    xx = await message.reply_text(text)
-     
     if msg:
         text += f"\n\n{msg}"
-    await xx.edit(text)    
+    await message.reply(text)    
