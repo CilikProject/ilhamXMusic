@@ -127,7 +127,7 @@ async def list_men(client, message: Message):
             if smex == 0:
                 smex += 1           
             text = ""
-            text += f"{user}" 
+            text += f"{user}\n" 
         except Exception:
             continue     
     if msg:
