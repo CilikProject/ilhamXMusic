@@ -166,7 +166,7 @@ async def sudos_list(client, message: Message):
                     smex += 1
                     text += " "
                 count += 1
-                text += f"{user} "
+                text += f", ".join({user})
             except Exception:
                 continue
     if not text:
