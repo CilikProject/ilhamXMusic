@@ -136,11 +136,29 @@ async def list_men(client, message: Message):
 
     
     
-@app.on_message(
-    filters.command("testi", [".", "-", "^", "!", "/"]) & filters.user(OWNER_ID)
-)
-async def sudos_list(client, message: Message):
-    text = ""
+@app.on_message(filters.command(SUDOUSERS_COMMAND) & ~BANNED_USERS)
+async def sudoe_list(client, message: Message):
+    rep = message.reply_to_message
+    msg = (
+        message.text.split(None, 1)[1]
+        if len(
+            message.command,
+        )
+        != 1
+        else None
+    )
+    text = " "
+    count = 0
+    for x in OWNER_ID:
+        try:
+            user = await app.get_users(x)
+            user = (
+                user.first_name if not user.mention else user.mention
+            )
+            count += 1
+        except Exception:
+            continue
+        text += f"➤ {user}\n"
     smex = 0
     for user_id in MENTION:
         if user_id not in OWNER_ID:
@@ -153,11 +171,16 @@ async def sudos_list(client, message: Message):
                 )
                 if smex == 0:
                     smex += 1
+                    text += " "
                 count += 1
-                text += f"{user}"
+                text += f"➤ {user}\n"
             except Exception:
                 continue
     if not text:
         await message.reply_text("NOT")
     else:
-        await message.reply_text(text)    
+        yy = await message.reply_text(text)
+    if msg:
+        text += f"\n\n{msg}"
+    await yy.edit(text)
+        
