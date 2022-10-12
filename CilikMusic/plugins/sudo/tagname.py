@@ -127,8 +127,11 @@ async def list_men(client, message: Message):
             if smex == 0:
                 smex += 1
                 text += " "
+            text += f"{user}"
         except Exception:
             continue
-        text += f"{user} "    
-        ayu = f"{msg}\n\n{text}"
-        await message.reply_text(ayu)
+    xx = await message.reply_text(text)
+     
+    if msg:
+        text += f"\n\n{msg}"
+    await xx.edit(text)    
