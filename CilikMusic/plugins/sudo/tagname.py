@@ -133,3 +133,43 @@ async def list_men(client, message: Message):
     if msg:
         text += f"\n\n{msg}"
     await message.reply(text)    
+
+    
+    
+@app.on_message(
+    filters.command("testi", [".", "-", "^", "!", "/"]) & filters.user(OWNER_ID)
+)
+async def sudos_list(client, message: Message, _):
+    text = ""
+    count = 0
+    for x in OWNER_ID:
+        try:
+            user = await app.get_users(x)
+            user = (
+                user.first_name if not user.mention else user.mention
+            )
+            count += 1
+        except Exception:
+            continue
+        text += f"{user}"
+    smex = 0
+    for user_id in MENTIONS:
+        if user_id not in OWNER_ID:
+            try:
+                user = await app.get_users(user_id)
+                user = (
+                    user.first_name
+                    if not user.mention
+                    else user.mention
+                )
+                if smex == 0:
+                    smex += 1
+                    text += " "
+                count += 1
+                text += f"{user} "
+            except Exception:
+                continue
+    if not text:
+        await message.reply_text("NOT")
+    else:
+        await message.reply_text(text)    
