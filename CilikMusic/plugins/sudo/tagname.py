@@ -115,7 +115,6 @@ async def list_men(client, message: Message):
     )
     if not rep and not msg:
         return await message.reply("**Berikan Sebuah Teks atau Reply**")
-    smex = 0
     for user_id in MENTION:
         try:
             user = await app.get_users(user_id)
@@ -124,10 +123,6 @@ async def list_men(client, message: Message):
                 if not user.mention
                 else user.mention
             )
-            if smex == 0:
-                smex += 1
-                text += " "
-            text += f"{user}"
         except Exception:
             continue
         text += f"{user}"    
