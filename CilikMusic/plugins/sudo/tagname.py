@@ -15,7 +15,6 @@ from CilikMusic import app
 from CilikMusic.misc import MENTION
 from CilikMusic.utils.database import add_mentions, remove_mentions
 from CilikMusic.utils.decorators.tools import get_arg
-from CilikMusic.utils.decorators import AdminRightsCheck
 # Command
 
 
@@ -26,7 +25,6 @@ from CilikMusic.utils.decorators import AdminRightsCheck
     & ~filters.edited
     & ~BANNED_USERS
 )
-@AdminRightsCheck
 async def addmen(client, message: Message):
     if MONGO_DB_URI is None:
         return await message.reply_text(
@@ -75,7 +73,6 @@ async def addmen(client, message: Message):
     & ~filters.edited
     & ~BANNED_USERS
 )
-@AdminRightsCheck
 async def delmen(client, message: Message):
     if MONGO_DB_URI is None:
         return await message.reply_text(
@@ -115,7 +112,6 @@ async def delmen(client, message: Message):
     & ~filters.edited
     & ~BANNED_USERS
 )
-@AdminRightsCheck
 async def men_list(client, message: Message):
     rep = message.reply_to_message
     msg = (
