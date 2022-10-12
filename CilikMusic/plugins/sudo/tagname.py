@@ -153,7 +153,6 @@ async def sudos_list(client, message: Message):
                 )
                 if smex == 0:
                     smex += 1
-                    text += " "
                 count += 1
                 text += f"{user}"
             except Exception:
