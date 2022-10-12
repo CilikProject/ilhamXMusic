@@ -107,7 +107,7 @@ async def delmen(client, message: Message):
 
   
 @app.on_message(
-    filters.command("mentions", [".", "-", "!", "^", "/"])
+    filters.command(["mentions", "daget"], [".", "-", "!", "^", "/"])
     & filters.group
     & ~filters.edited
     & ~BANNED_USERS
