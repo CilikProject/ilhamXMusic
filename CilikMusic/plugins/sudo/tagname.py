@@ -153,7 +153,7 @@ async def sudos_list(client, message: Message):
             continue
         text += f"{user}"
     smex = 0
-    for user_id in MENTIONS:
+    for user_id in MENTION:
         if user_id not in OWNER_ID:
             try:
                 user = await app.get_users(user_id)
