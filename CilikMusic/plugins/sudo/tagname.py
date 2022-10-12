@@ -151,16 +151,6 @@ async def sudoe_list(client, message: Message):
     )
     text = " "
     count = 0
-    for x in OWNER_ID:
-        try:
-            user = await app.get_users(x)
-            user = (
-                user.first_name if not user.mention else user.mention
-            )
-            count += 1
-        except Exception:
-            continue
-        text += f"{user}"
     smex = 0
     for user_id in MENTION:
         if user_id not in OWNER_ID:
