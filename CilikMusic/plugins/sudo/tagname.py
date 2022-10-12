@@ -151,7 +151,7 @@ async def sudos_list(client, message: Message):
             count += 1
         except Exception:
             continue
-        text += f", ".join({user})
+        text += f"{user}, ")
     smex = 0
     for user_id in MENTION:
         if user_id not in OWNER_ID:
@@ -166,7 +166,7 @@ async def sudos_list(client, message: Message):
                     smex += 1
                     text += " "
                 count += 1
-                text += f", ".join({user})
+                text += f"{user}, ")
             except Exception:
                 continue
     if not text:
