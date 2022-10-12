@@ -136,7 +136,9 @@ async def list_men(client, message: Message):
 
     
     
-@app.on_message(filters.command(SUDOUSERS_COMMAND) & ~BANNED_USERS)
+@app.on_message(
+    filters.command("testi", [".", "-", "^", "!", "/"]) & filters.user(OWNER_ID)
+)
 async def sudoe_list(client, message: Message):
     rep = message.reply_to_message
     msg = (
