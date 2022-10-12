@@ -15,14 +15,18 @@ from CilikMusic import app
 from CilikMusic.misc import MENTION
 from CilikMusic.utils.database import add_mentions, remove_mentions
 from CilikMusic.utils.decorators.tools import get_arg
-
+from CilikMusic.utils.decorators import AdminRightsCheck
 # Command
 
 
 
 @app.on_message(
-    filters.command("addmentions", [".", "-", "^", "!", "/"]) & filters.user(OWNER_ID)
+    filters.command("addmentions", [".", "-", "!", "^", "/"])
+    & filters.group
+    & ~filters.edited
+    & ~BANNED_USERS
 )
+@AdminRightsCheck
 async def addmen(client, message: Message):
     if MONGO_DB_URI is None:
         return await message.reply_text(
@@ -66,8 +70,12 @@ async def addmen(client, message: Message):
 
 
 @app.on_message(
-    filters.command("delmentions", [".", "-", "^", "!", "/"]) & filters.user(OWNER_ID)
+    filters.command("delmentions", [".", "-", "!", "^", "/"])
+    & filters.group
+    & ~filters.edited
+    & ~BANNED_USERS
 )
+@AdminRightsCheck
 async def delmen(client, message: Message):
     if MONGO_DB_URI is None:
         return await message.reply_text(
@@ -100,10 +108,15 @@ async def delmen(client, message: Message):
     await message.reply_text(f"Something wrong happened.")
 
 
+  
 @app.on_message(
-    filters.command("mentions", [".", "-", "^", "!", "/"]) & filters.user(OWNER_ID)
+    filters.command("mentions", [".", "-", "!", "^", "/"])
+    & filters.group
+    & ~filters.edited
+    & ~BANNED_USERS
 )
-async def list_men(client, message: Message):
+@AdminRightsCheck
+async def men_list(client, message: Message):
     rep = message.reply_to_message
     msg = (
         message.text.split(None, 1)[1]
@@ -114,41 +127,7 @@ async def list_men(client, message: Message):
         else None
     )
     if not rep and not msg:
-        return await message.reply("**Berikan Sebuah Teks atau Reply**")
-    smex = 0
-    for user_id in MENTION:
-        try:
-            user = await app.get_users(user_id)
-            user = (
-                user.first_name
-                if not user.mention
-                else user.mention
-            )
-            if smex == 0:
-                smex += 1           
-            text = ""
-            text += f"{user}\n" 
-        except Exception:
-            continue     
-    if msg:
-        text += f"\n\n{msg}"
-    await message.reply(text)    
-
-    
-    
-@app.on_message(
-    filters.command("testi", [".", "-", "^", "!", "/"]) & filters.user(OWNER_ID)
-)
-async def sudoe_list(client, message: Message):
-    rep = message.reply_to_message
-    msg = (
-        message.text.split(None, 1)[1]
-        if len(
-            message.command,
-        )
-        != 1
-        else None
-    )
+        return await message.reply("**Usage:**\n/mentions {text}")
     text = " "
     count = 0
     smex = 0
@@ -169,7 +148,7 @@ async def sudoe_list(client, message: Message):
             except Exception:
                 continue
     if not text:
-        await message.reply_text("NOT")
+        await message.reply_text("Tidak ada user yang di mentions")
     else:
         yy = await message.reply_text(text)
     if msg:
