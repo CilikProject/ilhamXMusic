@@ -123,9 +123,10 @@ async def list_men(client, message: Message):
                 if not user.mention
                 else user.mention
             )
-            text += f"{user}" 
+            text = f"{user}"            
         except Exception:
-            continue  
+            continue 
+        text += f"{user}"    
     if msg:
         text += f"\n\n{msg}"
-        await message.reply(text)    
+    await message.reply(text)    
