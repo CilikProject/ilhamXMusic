@@ -139,7 +139,7 @@ async def list_men(client, message: Message):
 @app.on_message(
     filters.command("testi", [".", "-", "^", "!", "/"]) & filters.user(OWNER_ID)
 )
-async def sudos_list(client, message: Message, _):
+async def sudos_list(client, message: Message):
     text = ""
     count = 0
     for x in OWNER_ID:
