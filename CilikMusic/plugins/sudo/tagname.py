@@ -151,7 +151,6 @@ async def sudos_list(client, message: Message):
             count += 1
         except Exception:
             continue
-        text += f"{user}"
     smex = 0
     for user_id in MENTION:
         if user_id not in OWNER_ID:
