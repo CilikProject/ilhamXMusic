@@ -175,7 +175,7 @@ async def sudoe_list(client, message: Message):
                     smex += 1
                     text += " "
                 count += 1
-                text += f"{user}" 
+                text += f", {user}" 
             except Exception:
                 continue
     if not text:
