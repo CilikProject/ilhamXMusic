@@ -10,18 +10,29 @@
 import asyncio
 import importlib
 import sys
-
-from pyrogram import idle
-from pytgcalls.exceptions import NoActiveGroupCall
+from atexit import register
+from os import execl
 
 import config
-from config import BANNED_USERS
 from CilikMusic import LOGGER, app, userbot
 from CilikMusic.core.call import Cilik
 from CilikMusic.plugins import ALL_MODULES
 from CilikMusic.utils.database import get_banned_users, get_gbanned
+from config import BANNED_USERS
+from pyrogram import idle
+from pytgcalls.exceptions import NoActiveGroupCall
 
 loop = asyncio.get_event_loop()
+
+
+async def auto_restart():
+    while not await asyncio.sleep(500):
+
+        def _() -> None:
+            execl(sys.executable, sys.executable, "-m", "CilikMusic")
+
+        register(_)
+        sys.exit(0)
 
 
 async def init():
@@ -33,15 +44,12 @@ async def init():
         and not config.STRING5
     ):
         LOGGER("CilikMusic").error(
-            "Tidak Ada Asisten Klien yang Ditentukan Vars!.. Proses Keluar."
+            "No Assistant Clients Vars Defined!.. Exiting Process."
         )
         return
-    if (
-        not config.SPOTIFY_CLIENT_ID
-        and not config.SPOTIFY_CLIENT_SECRET
-    ):
+    if not config.SPOTIFY_CLIENT_ID and not config.SPOTIFY_CLIENT_SECRET:
         LOGGER("CilikMusic").warning(
-            "Tidak ada Spotify Vars yang ditentukan. Bot Anda tidak akan dapat memainkan kueri spotify."
+            "No Spotify Vars defined. Your bot won't be able to play spotify queries."
         )
     try:
         users = await get_gbanned()
@@ -55,9 +63,7 @@ async def init():
     await app.start()
     for all_module in ALL_MODULES:
         importlib.import_module("CilikMusic.plugins" + all_module)
-    LOGGER("CilikMusic.plugins").info(
-        "Successfully Imported Modules "
-    )
+    LOGGER("CilikMusic.plugins").info("Successfully Imported Modules ")
     await userbot.start()
     await Cilik.start()
     try:
@@ -66,12 +72,13 @@ async def init():
         )
     except NoActiveGroupCall:
         LOGGER("CilikMusic").error(
-            "[ERROR] - \n\nHarap aktifkan Obrolan Suara Grup Logger Anda. Pastikan Anda tidak pernah menutup/mengakhiri panggilan suara di grup log Anda"
+            "[ERROR] - \n\nHarap aktifkan Obrolan Suara di Grup Logger Anda. Pastikan Anda tidak pernah menutup/mengakhiri panggilan Obrolan suara di grup log Anda"
         )
         sys.exit()
     except:
         pass
     await Cilik.decorators()
+    asyncio.create_task(auto_restart())
     LOGGER("CilikMusic").info("Cilik Music Bot Started Successfully")
     await idle()
 
