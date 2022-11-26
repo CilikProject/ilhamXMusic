@@ -10,6 +10,7 @@
 import os
 import sys
 from os import listdir, mkdir
+from shutil import rmtree
 
 from ..logging import LOGGER
 
@@ -21,13 +22,12 @@ def dirr():
         )
         sys.exit()
     for file in os.listdir():
-        if file.endswith(".jpg"):
+        if file.endswith((".jpg", ".jpeg")):
             os.remove(file)
-    for file in os.listdir():
-        if file.endswith(".jpeg"):
-            os.remove(file)
-    if "downloads" not in listdir():
-        mkdir("downloads")
-    if "cache" not in listdir():
-        mkdir("cache")
-    LOGGER(__name__).info("Directories Updated.")
+    if "downloads" in listdir():
+        rmtree("downloads", ignore_errors=True)
+    mkdir("downloads")
+    if "cache" in listdir():
+        rmtree("cache", ignore_errors=True)
+    mkdir("cache")
+    LOGGER(__name__).info("Direktori Diperbarui.")
