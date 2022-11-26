@@ -26,9 +26,9 @@ loop = asyncio.get_event_loop()
 
 
 async def auto_restart():
-    while not await asyncio.sleep(500):
+    while not await asyncio.sleep(18000):
 
-        def _() -> None:
+        def _():
             execl(sys.executable, sys.executable, "-m", "CilikMusic")
 
         register(_)
