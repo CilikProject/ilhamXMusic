@@ -65,7 +65,12 @@ UPSTREAM_BRANCH = getenv("UPSTREAM_BRANCH", "master")
 # GIT TOKEN ( if your edited repo is private)
 GIT_TOKEN = getenv("GIT_TOKEN", None)
 
-# Only  Links formats are  accepted for this Var value.
+#MUST JOIN
+MUST_JOIN = getenv("MUST_JOIN", None)
+if MUST_JOIN.startswith("@"):
+    MUST_JOIN = MUST_JOIN.replace("@", "")
+
+    # Only  Links formats are  accepted for this Var value.
 SUPPORT_CHANNEL = getenv(
     "SUPPORT_CHANNEL", None
 )  # Example:- https://t.me/CilikProject
