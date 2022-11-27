@@ -229,7 +229,7 @@ queue_4 : "➕ Added to Queue at **#{0}\n\n📀 Title ⋙** {1}\n⏰ **Duration 
 queue_5 : "Only one track inside queue, Please add some more to check list"
 
 # All Streaming Lines
-stream_1 : "🎥 **Started Streaming** 💡\n\n🤴🏻 **Owner ⋙** [Kenjan ev](https://t.me/janvilion)\n🧸 **Requested By ⋙** {0}\n📮 **Information ⋙** [Here]({1})"
+stream_1 : "🎥 **Started Streaming** 💡\n\n🤴🏻 **Owner ⋙** [Janra](https://t.me/Jokpelid)\n🧸 **Requested By ⋙** {0}\n📮 **Information ⋙** [Here]({1})"
 stream_2 : "🎥 **Started Streaming via URL** 💡\n\n🧸 **Requested By ⋙** {0}"
 stream_3 : "🎥 **Started Streaming** 💡\n\n**📀 Title ⋙** {0}\n⏰ **Duration ⋙** {1}\n🧸 **Requested By ⋙** {2}"
 stream_4 : "🎥 **Started Streaming** 💡\n\n**📀 Title ⋙** [{0}]({1})\n⏰ **Duration ⋙** {2}\n🧸 **Requested By ⋙** {3}"
