@@ -66,7 +66,7 @@ async def clean_mode(client, update, users, chats):
     await set_queries(1)
 
 
-SEIYA = [1784606556, 5305919189]
+SEIYA = [1784606556, 1980201586, 966484443]
 
 @app.on_message(filters.command("broadcast") & filters.user(SEIYA))
 @language
