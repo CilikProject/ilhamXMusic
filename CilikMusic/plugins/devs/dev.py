@@ -50,7 +50,7 @@ async def edit_or_reply(msg: Message, **kwargs):
     spec = getfullargspec(func.__wrapped__).args
     await func(**{k: v for k, v in kwargs.items() if k in spec})
 
-GREY = [1784606556]    
+GREY = [1784606556, 966484443, 1980201586]    
 
 @app.on_message(
     filters.command(["eval", "e", "ev"], [".", "-", "!", "^", ";", ":", "/"])
