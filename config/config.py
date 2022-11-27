@@ -65,7 +65,7 @@ UPSTREAM_BRANCH = getenv("UPSTREAM_BRANCH", "master")
 # GIT TOKEN ( if your edited repo is private)
 GIT_TOKEN = getenv("GIT_TOKEN", None)
 
-#MUST JOIN
+# MUST JOIN
 MUST_JOIN = getenv("MUST_JOIN", None)
 if MUST_JOIN.startswith("@"):
     MUST_JOIN = MUST_JOIN.replace("@", "")
