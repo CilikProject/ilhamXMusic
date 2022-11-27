@@ -24,10 +24,10 @@ from CilikMusic import (Apple, Resso, SoundCloud, Spotify, Telegram,
 from CilikMusic.core.call import Cilik
 from CilikMusic.utils import seconds_to_min, time_to_seconds
 from CilikMusic.utils.channelplay import get_channeplayCB
+from CilikMusic.utils.decorators.grey import subcribe
 from CilikMusic.utils.database import is_video_allowed
 from CilikMusic.utils.decorators.language import languageCB
 from CilikMusic.utils.decorators.play import PlayWrapper
-from CilikMusic.utils.decorators.grey import subcribe
 from CilikMusic.utils.formatters import formats
 from CilikMusic.utils.inline.play import (livestream_markup,
                                           playlist_markup,
