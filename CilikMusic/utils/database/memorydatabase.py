@@ -275,6 +275,7 @@ async def remove_active_video_chat(chat_id: int):
 
 
 # Delete command mode
+# Delete command mode
 async def is_commanddelete_on(chat_id: int) -> bool:
     if chat_id not in command:
         return True
@@ -297,9 +298,9 @@ async def commanddelete_on(chat_id: int):
 # Clean Mode
 async def is_cleanmode_on(chat_id: int) -> bool:
     if chat_id not in cleanmode:
-        return True
-    else:
         return False
+    else:
+        return True
 
 
 async def cleanmode_off(chat_id: int):
@@ -312,7 +313,6 @@ async def cleanmode_on(chat_id: int):
         cleanmode.remove(chat_id)
     except:
         pass
-
 
 # Non Admin Chat
 async def check_nonadmin_chat(chat_id: int) -> bool:
