@@ -513,16 +513,16 @@ async def cleanmode_mark(client, CallbackQuery, _):
     if command == "CLEANMODE":
         sta = None
         if await is_commanddelete_on(CallbackQuery.message.chat.id):
-            sta = True
+            sta = False
         sug = None
         if await is_suggestion(CallbackQuery.message.chat.id):
-            sug = True
+            sug = False
         cle = None
         if await is_cleanmode_on(CallbackQuery.message.chat.id):
             await cleanmode_off(CallbackQuery.message.chat.id)
         else:
             await cleanmode_on(CallbackQuery.message.chat.id)
-            cle = True
+            cle = False
         buttons = cleanmode_settings_markup(
             _, status=cle, dels=sta, sug=sug
         )
@@ -533,15 +533,15 @@ async def cleanmode_mark(client, CallbackQuery, _):
         cle = None
         sta = None
         if await is_cleanmode_on(CallbackQuery.message.chat.id):
-            cle = True
+            cle = False
         sug = None
         if await is_suggestion(CallbackQuery.message.chat.id):
-            sug = True
+            sug = False
         if await is_commanddelete_on(CallbackQuery.message.chat.id):
             await commanddelete_off(CallbackQuery.message.chat.id)
         else:
             await commanddelete_on(CallbackQuery.message.chat.id)
-            sta = True
+            sta = False
         buttons = cleanmode_settings_markup(
             _, status=cle, dels=sta, sug=sug
         )
