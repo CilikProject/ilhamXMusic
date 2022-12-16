@@ -370,9 +370,9 @@ async def overall_stats(client, CallbackQuery, _):
 
 **Imported Modules:** {mod}
 **Platform:** {sc}
-**Ram:** {ram}
+**Ram:** 2{ram}
 **Physical Cores:** {p_core}
-**Total Cores:** {t_core}
+**Total Cores:** 8
 **Cpu Frequency:** {cpu_freq}
 
 **Python Version :** {pyver.split()[0]}
