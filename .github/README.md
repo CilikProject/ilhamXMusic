@@ -1,4 +1,4 @@
-<img src="https://telegra.ph/file/062af7533fb7f44a30f0c.jpg" align="right" width="200" height="200"/>
+<img src="https://telegra.ph/file/e9edc87cec87f19f6deb5.jpg" align="right" width="200" height="200"/>
 
 # Cilik Music Bot <img src="https://img.shields.io/github/v/release/grey423/CilikMusic?color=black&logo=github&logoColor=black&style=social" alt="RELEASE">
 
